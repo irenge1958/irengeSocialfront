@@ -1,0 +1,29 @@
+.contents {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+   margin-left: 0px;
+}
+
+.wrapperprf{
+    flex:9;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.wrapperrf{
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+.wrapperfeed{
+    flex:7.5;
+    margin:auto;
+    right:0;
+    left:0
+}
+.wrapperRightside{
+    flex:4.5;
+    margin-right: 15px;
+    width:100%
+}

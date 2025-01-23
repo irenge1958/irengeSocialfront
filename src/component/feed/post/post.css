@@ -1,0 +1,82 @@
+.post1{
+    box-shadow: -2px -1px 16px -1px rgba(56,54,54,0.4);
+-webkit-box-shadow: -2px -1px 16px -1px rgba(56,54,54,0.4);
+-moz-box-shadow: -2px -1px 16px -1px rgba(56,54,54,0.4);
+width:94%;
+margin: auto;
+margin-top:15px;
+border-radius: 2.2%;
+text-align: left;
+padding:3px;
+
+
+}
+.post2{
+    box-shadow: -2px -1px 16px -1px rgba(56,54,54,0.4);
+-webkit-box-shadow: -2px -1px 16px -1px rgba(56,54,54,0.4);
+-moz-box-shadow: -2px -1px 16px -1px rgba(56,54,54,0.4);
+width:74%;
+margin: auto;
+margin-top:10px;
+border-radius: 2.2%;
+text-align: left;
+padding:3px;
+height: 35px;
+border-radius: 50px;
+
+}
+.mypostmidx{
+    margin-top: 13px;
+    position: relative;
+}
+.mypostmidx img{
+    width: 100%;
+    height:100%;
+}
+.mypostup{
+    display: flex;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+.mypostup img{
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+}
+.mypostup input{
+    border: none;
+}
+.mypostup input:focus{
+    outline:none;
+
+}
+
+.mypostup p{
+    font-weight: bolder;
+    text-align: left;
+}
+.mypostdown1{
+    position: relative;
+    display: flex;
+    gap:300px;
+   margin: 35px;
+}
+.mypostdown{
+    display: flex;
+    gap:18px;
+}
+.mediapost{
+    display: flex;
+    gap:2px;
+    cursor: pointer;
+}
+.mediapost span{
+    margin-top: -3px;
+}
+.closepost{
+    position:absolute;
+    cursor:pointer;
+    right:0;
+  
+}

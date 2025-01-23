@@ -1,0 +1,33 @@
+.myallxx {
+    margin: 0;
+    padding: 0; /* Ensure padding is also reset */
+  text-align: right;
+    min-height: 100vh; /* Use viewport height for minimum height */
+display: flex;
+}
+
+
+.mypostmidxx {
+    display: flex;
+    justify-content: center; /* Horizontally center */
+    align-items: center; /* Vertically center */
+    margin-top: -2px;
+    background-color: black;
+    min-height: 100vh;
+}
+
+.mypostmidxx img {
+    width: 80%; /* Ensure the image doesn't exceed its container */
+    height: auto; /* Ensure the image doesn't exceed its container */
+}
+
+.photo{
+    flex:8.5;
+    height: 100%;
+}
+.autre{
+    padding: 10px;
+    flex:3.5;
+    width:100%;
+   height:auto
+}

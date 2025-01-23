@@ -1,0 +1,22 @@
+.messagebox{
+    margin-top:5px ;
+    margin-bottom: 10px;
+    padding: 10px;
+    color:white;
+    max-width: 300px;
+}
+.myboxtimeandmessage{
+    display: flex;
+    flex-direction: column;
+}
+.mytexte{
+    display:flex;
+    gap:10px;
+margin: 18px;
+
+}
+.mytexte div{
+   
+    border-radius: 20px;
+}
+

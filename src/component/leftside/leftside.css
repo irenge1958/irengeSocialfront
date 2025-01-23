@@ -1,0 +1,59 @@
+.mesevent{
+    display: flex;
+   gap:15px;
+   margin-bottom: 8px;
+ cursor: pointer;
+ margin-top: 10px;
+
+}
+
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+.b{
+  position: relative;
+    width: 165px;
+    height:35px;
+border-radius: 5%;
+cursor:pointer;
+border:none;
+margin-left:-190px;
+margin-bottom: 10px;
+}
+.i{
+    position: relative;
+    bottom: 5px;
+    
+   
+}
+.p2{
+ position: relative;
+    width:35px;
+    height:35px;
+    border-radius: 50%;
+object-fit: cover;
+ margin-top: 2px;cursor: pointer;
+}
+.amis{
+    display: flex;
+   margin-bottom: 12px;
+    font-size: 16px;
+    font-weight: light;
+gap: 10px;
+
+}
+.amis p{
+    position: relative;
+    top:10px;
+    cursor: pointer;
+}

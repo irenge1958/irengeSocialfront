@@ -1,0 +1,58 @@
+.allmytchat{
+    height: 100%;
+    width:100%;
+    display: flex;
+    justify-content: space-between;
+}
+.onlinbagee{
+    background-color: rgb(0, 230, 122);
+    height: 11.5px;
+    width:11.5px;
+    border-radius: 50%;
+    margin-left: -18px;
+    margin-top: 3px;
+    z-index: 10;
+    border: 3px solid white;
+}
+.conversation{
+    height:93vh;
+    flex:3;
+    margin-left: 10px;
+    overflow-y: scroll;
+}
+.tchat{
+flex:5;
+height:93vh;
+
+}
+.onlinefriend{
+    flex:3
+}
+.myconv:hover{
+background-color: rgb(180, 180, 180);
+}
+.mymessagess{
+height: 70%;
+overflow-y: scroll;
+}
+.mytextareaform{
+    margin-top: 10px;
+    display:flex;
+    gap: 5px;
+    align-items: center;
+}
+.mytextarea{
+    width:80%;
+    height:90px;
+    padding: 5px;
+}
+.mybuttform{
+    width:70px;
+    height:40px;
+    border: none;
+    border-radius:5px;
+    color:white;
+    background-color: teal;
+    cursor: pointer;
+ 
+}

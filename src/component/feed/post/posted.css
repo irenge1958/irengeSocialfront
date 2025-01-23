@@ -1,0 +1,120 @@
+.post{
+    box-shadow: -2px -1px 16px -1px rgba(56,54,54,0.4);
+-webkit-box-shadow: -2px -1px 16px -1px rgba(56,54,54,0.4);
+-moz-box-shadow: -2px -1px 16px -1px rgba(56,54,54,0.4);
+width:94%;
+margin: auto;
+margin-top: 10px;
+border-radius: 2.1%;
+text-align: right;
+padding:3px;
+min-height: 180px;
+}
+.mypostup1{
+   
+    display: flex;
+  
+    width: 100%;
+    margin-bottom: 7px;
+}
+.mypostup1 img{
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+}
+.mypostup1 p{
+    margin-top:19px;
+    margin-left:10px;
+    font-weight: bold;
+}
+.myb3{
+    position: absolute;
+    margin-bottom:20px;
+    margin-left: 10px;
+}
+.myb32{
+ cursor:pointer;
+   margin-top: 10px;
+   padding-top: 5px;
+   
+}
+.myb321:hover{
+    background-color: rgb(236, 236, 236);
+     height: 30px;
+    border-radius: 48%;
+    height: 30px;
+   }
+   .op:hover{
+    background-color: rgb(221, 221, 221);
+   
+   }
+.mypostmid{
+    margin-top: 13px;
+ 
+}
+.mycom{
+    position: relative;
+margin-top: 10px;
+    border:1px solid gray;
+    background-color: white;
+    width: max-content;
+    border-radius:20px;
+    height: 35px;
+    padding-right: 10px;
+}
+.mycomf{
+    position: relative;
+    align-items: center;
+    text-align: center;
+     display: flex;
+    
+     margin-top: 4px;
+     margin-left: 5.5px;
+     width:100%;
+}
+.mycomf input{
+    position: relative;
+
+    width: 250px;
+    height: 25px;
+    border: none;
+    left: 5px;
+  
+}
+.mycomf button{
+position: relative;
+    margin-right: 0;
+    align-items: left;
+    
+}
+.mypostmid img{
+    width: 100%;
+    height:100%;
+}
+.mypostbot{
+    display: flex;
+}
+.mypostup12{
+    display:flex
+}
+.jaime{
+    margin-top: 5px;
+    color:red;
+    cursor:pointer;
+    z-index: 1000;
+}
+.jxaime{
+ cursor: pointer;
+ margin-top: 5px;
+ z-index: 1000;
+}
+.mypostbot p{
+    margin-top: 8px;
+ 
+}
+.comment{
+    position: relative;
+    right:10px;
+  top: -25px;;
+}

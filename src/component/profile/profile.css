@@ -1,0 +1,28 @@
+.wrapperally{
+ margin-bottom: 119px;
+    height: 350px;
+    justify-content: space-around;
+}
+.wrapperally .back{
+   min-width:70%;
+   
+    height: 100%;
+    z-index: 10px;
+}
+
+.wrapperally .front{
+    width:13.5%;
+     height: 55%;
+     z-index: 100px;
+     margin-top: -87px;
+     border-radius: 50%;
+     border:4px solid white;
+ }
+
+ .front{
+    cursor:pointer;
+ }
+.myparams p{
+    cursor:pointer;
+   
+}

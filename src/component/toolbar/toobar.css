@@ -1,0 +1,207 @@
+.toolbar{
+ position: sticky;
+     z-index: 199;
+top: 0;
+    background-color: #1877f2;
+    width: 100%;
+   left:0;
+   z-index: 10000;
+ height: 57px;
+    align-items: center;
+
+}
+.toolbarwrapper{
+    display:flex;
+    justify-content: space-around;
+    z-index: 1999px;
+}
+.logo1{
+    position: relative;
+    flex:3.1;
+    font-size: 25px;
+    font-weight: bold;
+    color: white;
+left: 20px;
+top: 10px;
+
+}
+/* .searchpp{
+    width: 700px;
+    height:350px;  
+    z-index: 100000; 
+    position: relative;
+    background-color: rgb(247, 243, 243);
+    margin-top: 7px;
+} */
+/* .search{
+    position: relative;
+    top:10px;
+    flex:5.3;
+  
+  
+    border:1px solid black;
+    margin-right: 10px;
+    background-color: white;
+    width: 700px;
+    border-radius:20px;
+    height: 35px;
+} */
+.searchpp img{
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+}
+.modal {
+    background-color: rgb(245, 245, 245);
+   
+    border-radius: 9px;
+    align-items: right;
+    margin-right: 13px;
+    margin-top: 11px;
+    padding: 25px;
+}
+.searchpp{
+    position: relative;
+
+    
+    
+}
+.searcheduser{
+    margin-left:12px ;
+    display: flex;gap: 15px;
+      padding-top: 6px;
+  padding-bottom: 6px;
+  
+}
+.search{
+    position: relative;
+    top:10px;
+    flex:5.3;
+  cursor:pointer;
+  visibility: hidden;
+    border:1px solid black;
+    margin-right: 10px;
+    background-color: white;
+    width: 700px;
+    border-radius:20px;
+    height: 35px;
+}
+
+.searchx{
+    position: relative;
+    top:-1px;
+    visibility: visible;
+  height:auto;
+  min-height: 35px;
+   
+    margin-right: 10px;
+    background-color: white;
+    width: 700px;
+    border-radius:20px;
+    max-height: 400px;
+   
+}
+.searchpp :hover{
+    background-color: rgb(211, 205, 205);
+    
+}
+.form{
+    position: relative;
+    align-items: center;
+    text-align: center;
+     display: flex;
+     margin-bottom: 10px;
+}
+.form span{
+    position: relative;
+    top:8px;
+    left:4px;
+    cursor: pointer;
+}
+.form input{
+    position: relative;
+    top: 5px;
+    width: 350px;
+    height: 25px;
+    border: none;
+    left: 5px;
+   
+}
+.form input:focus{
+    outline:none;
+}
+.other{
+    position: relative;
+    top:10px;
+  
+    flex:3.6;
+    display: flex;
+    justify-content: space-around;
+    align-items: center; font-size: 16px;
+    color: white;
+}
+.other img{
+margin-top: -5px;
+}
+.homepagelink
+{
+    flex: 3;
+    cursor: pointer;
+}
+.timelinelink{
+    flex:3;
+    cursor: pointer;
+   
+}
+.photopro{
+    flex: 1;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+    margin-right: 13px;
+}
+ 
+.notification{
+flex: 4;
+    display: flex;
+    justify-content: space-around;
+    cursor: pointer;
+margin-right: 20px;
+}
+.iconot{
+    display: flex;
+}
+.userbadge{
+    position: relative;
+    border:1px solid;
+    font-size: 15px;
+    background-color: rgb(218, 4, 4);
+    align-items: center;
+    text-align: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    padding-top: 0px;
+    margin-top: -5px;
+    margin-left: -15px;
+}
+.usericon{
+    font-weight: bolder;
+}
+.myparams div{
+    cursor: pointer;
+    display:flex;
+    padding:13px;
+    font-size: larger;
+    gap:10px;
+  margin-top: 4px;
+ 
+}
+.myparams div:hover{
+background-color: gray;
+
+
+}

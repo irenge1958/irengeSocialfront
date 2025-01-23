@@ -1,0 +1,73 @@
+.loginwrapperallx{
+    width:100vw;
+    height:100vh;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    background-color: #f0f2f5;
+}
+.loginwrapperxx{
+display: flex;
+height:100%;
+width: 65%;
+gap:10px;
+
+}
+.loginstylex, .welcomex{
+flex: 1;
+display: flex;
+flex-direction: column;
+justify-content: center;
+}
+
+.welcomex{
+    font-size: 18px;
+   
+}
+.formloginx{background-color: white;padding:20px;border-radius:10px;height:430px;display:flex;flex-direction:column;justify-content: space-between;}
+.formloginx input{
+    height: 15px;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid gray;
+    font-size: 18px;
+}
+.formloginx, input:focus{
+    outline:none;
+}
+.submbuttonx{
+    height: 50px;
+     font-size: 20px;
+  
+    border-radius: 10px;
+   background-color: #1775ee;
+   border:none;
+   cursor:pointer;
+   font-weight: 500;
+  color: white;
+}
+.loginforgetx{
+    text-align: center;
+    color:#1775ee;
+    cursor:pointer;
+}
+.regbuttonx{
+    height: 50px;
+     font-size: 20px;
+    border-radius: 10px;
+   background-color: #42b72a;
+   border:none;
+   cursor:pointer;
+   font-weight: 500;
+  color: white;
+  width: 100%;
+}
+.logologinx{
+    font-weight: 800;
+    font-size:30px;
+    color:#1775ee;
+}
+.erreurx{
+    text-align: center;
+    color:crimson;
+}
