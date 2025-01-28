@@ -4,7 +4,7 @@ import Posted from './post/posted'
 import { useContext,useEffect,useState } from 'react';
 import {Usercontext} from '../contextapi/contextlogin';
 import { useLocation} from 'react-router-dom';
-import axios from 'axios';
+import apiClient from '../../apiclient'
 
 const Feed =() => {
     const location = useLocation();
@@ -26,7 +26,7 @@ const Feed =() => {
                 let response;
                 let reponse
                 if (id) {
-                   response = await axios.get(`post/seepost/${id}`, {
+                   response = await apiClient.get(`post/seepost/${id}`, {
                     headers: {
                       'Cache-Control': 'no-cache' // Disable caching
                     }
@@ -34,7 +34,7 @@ const Feed =() => {
                 }
              
                 else {
-                    response = await axios.get(`post/Timeline/${user._id}`, {
+                    response = await apiClient.get(`post/Timeline/${user._id}`, {
                         headers: {
                           'Cache-Control': 'no-cache' // Disable caching
                         }
