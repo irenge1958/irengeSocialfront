@@ -1,7 +1,7 @@
 import React from 'react'
 import './register.css'
 import { useRef } from 'react'
-import axios from 'axios' 
+import apiClient from '../../apiclient'
 import { useState } from 'react';
 import {Link,useHistory} from 'react-router-dom';
 const Register =()=>{
@@ -22,7 +22,7 @@ const Register =()=>{
         }
         else{
             try {
-            const res=await axios.post('Auth/register',{email:email.current.value,username:username.current.value,password:password.current.value})
+            const res=await apiClient.post('Auth/register',{email:email.current.value,username:username.current.value,password:password.current.value})
           history.push('/') 
           
         } catch (error) {

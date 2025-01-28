@@ -3,7 +3,7 @@ import RssFeedSharpIcon from '@mui/icons-material/RssFeedSharp';
 import ChatSharpIcon from '@mui/icons-material/ChatSharp';
 import PlayCircleSharpIcon from '@mui/icons-material/PlayCircleSharp';
 import {Usercontext} from '../contextapi/contextlogin';
-import axios from 'axios'
+import apiClient from '../../apiclient'
 import "./leftside.css"
 import { Link } from "react-router-dom";
 import {useContext,useState,useEffect} from 'react'
@@ -12,7 +12,7 @@ const {user}=useContext(Usercontext)
 const [friend,setFriends]=useState([])
 useEffect(()=>{
     const getfriend=async()=>{
-       const res= await axios.get(`users/all/users`)
+       const res= await apiClient.get(`users/all/users`)
        const filterfriend=res.data.filter((a)=>{
         return a.city===user.city && a._id!==user._id
        })

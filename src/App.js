@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
+import apiClient from './apiclient'
 import { Route, Switch, useLocation } from "react-router-dom";
 import { Usercontext } from './component/contextapi/contextlogin';
 import Toolbar from './component/toolbar/toolbar';
@@ -11,7 +12,7 @@ import Register from './component/register/register';
 import Linkpost from './component/feed/post/linkpost';
 import Login from './component/Login/Login';
 import './app.css';
-import axios from 'axios';
+import apiClient from './apiclient'
 import notification from './notification.mp3';
 import useSound from "use-sound";
 import { useMediaQuery } from 'react-responsive';
@@ -54,7 +55,7 @@ function App() {
       });
 
       const fetchNotifications = async () => {
-        const res = await axios.get(`users/${user._id}`);
+        const res = await apiClient.get(`users/${user._id}`);
         if (res.data.notifications.length !== user.notifications.length) {
           localStorage.setItem('user', JSON.stringify(res.data));
         }
