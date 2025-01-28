@@ -11,7 +11,7 @@ import useSound from "use-sound";
 import HomeIcon from '@mui/icons-material/Home';
 import { useContext } from 'react';
 import {Usercontext} from '../contextapi/contextlogin';
-import axios from 'axios'
+import apiClient from '../../apiclient'
 import { useState,useEffect } from "react";
 import Modal from "./modal";
 import Modalnot from "./modalnot";
@@ -39,7 +39,7 @@ const Toolbar =({socket,arrivalmessage})=> {
         const q=nom.current.value
     
         if(q){
-            const myfriends=await axios.get(`users/searchs/${q}`)
+            const myfriends=await apiClient.get(`users/searchs/${q}`)
             if(myfriends.data.length!==0){
              setResults(myfriends.data)     
              alert(false)
@@ -62,7 +62,7 @@ const search=async(q)=>{
     SetFound(false)
     if(q){
         
-        const myfriends=await axios.get(`users/search/${q}`)
+        const myfriends=await apiClient.get(`users/search/${q}`)
 setResults(myfriends.data)
 window.addEventListener('click', () => {
     setResults([])
@@ -111,7 +111,7 @@ useEffect(() => {
 }, [param, param2]);
 useEffect(()=>{
     const fecth=async()=>{
-     if (user?.notifications.length>0){const res=await axios.get(`post/not/${user?.notifications}`)
+     if (user?.notifications.length>0){const res=await apiClient.get(`post/not/${user?.notifications}`)
      const mynot=res.data?.filter((a)=>{return a?.read===false})
      setLength(mynot.length)}
          
@@ -131,9 +131,9 @@ useEffect(()=>{
     const message = [];
     const getit = async () => {
         try {
-            const res = await axios.get(`tchat/messagefromconvs/${user._id}`);
+            const res = await apiClient.get(`tchat/messagefromconvs/${user._id}`);
             const promises = res.data.map(async (x) => {
-                const res1 = await axios.get(`tchat/message/${x._id}`);
+                const res1 = await apiClient.get(`tchat/message/${x._id}`);
                 const unreadMessages = res1.data.filter((msg) => msg.read === 'false' || msg.read === '');
                 return unreadMessages;
             });

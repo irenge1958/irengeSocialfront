@@ -27,17 +27,13 @@ const Feed =() => {
                 let reponse
                 if (id) {
                    response = await apiClient.get(`post/seepost/${id}`, {
-                    headers: {
-                      'Cache-Control': 'no-cache' // Disable caching
-                    }
+                  
                   });;
                 }
              
                 else {
                     response = await apiClient.get(`post/Timeline/${user._id}`, {
-                        headers: {
-                          'Cache-Control': 'no-cache' // Disable caching
-                        }
+                      
                       });
                 } if(video){
               
