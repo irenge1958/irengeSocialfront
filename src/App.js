@@ -12,7 +12,6 @@ import Register from './component/register/register';
 import Linkpost from './component/feed/post/linkpost';
 import Login from './component/Login/Login';
 import './app.css';
-import apiClient from './apiclient'
 import notification from './notification.mp3';
 import useSound from "use-sound";
 import { useMediaQuery } from 'react-responsive';
