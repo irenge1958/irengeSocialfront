@@ -5,7 +5,7 @@ import FavoriteSharpIcon from '@mui/icons-material/FavoriteSharp';
 import { useState,useEffect } from 'react';
 import {Usercontext} from '../../contextapi/contextlogin';
 import {format} from 'timeago.js'
-import axios from 'axios'
+import apiClient from "../../../apiclient";
 import { useContext,useRef,useMemo } from 'react';
 import { Link } from "react-router-dom";
 import SendSharpIcon from '@mui/icons-material/SendSharp';
@@ -17,7 +17,7 @@ const {user}=useContext(Usercontext)
     useEffect(() => {
         const myuser = async () => {
             try {
-                const response = await axios.get(`users/${post.user_id}`);
+                const response = await apiClient.get(`users/${post.user_id}`);
                 setUsername(response.data);
                 
             } catch (error) {
@@ -37,7 +37,7 @@ const {user}=useContext(Usercontext)
         try {
             
             const promises = comments.map(async (c) => {
-                const res = await axios.get(`users/${c.id}`);
+                const res = await apiClient.get(`users/${c.id}`);
                 return {...res.data,content:c.content}
             });
             const allComments = await Promise.all(promises);
@@ -66,7 +66,7 @@ const {user}=useContext(Usercontext)
     try {
         
         const promises = comments.map(async (c) => {
-            const res = await axios.get(`users/${c.id}`);
+            const res = await apiClient.get(`users/${c.id}`);
             return {...res.data,content:c.content}
         });
         const allComments = await Promise.all(promises);
@@ -121,7 +121,7 @@ const mybody={
     content:content.current.value
 }
 setUsercomment(content.current.value)
-const res=await axios.put(`post/comment/${comm.ids}`,mybody)
+const res=await apiClient.put(`post/comment/${comm.ids}`,mybody)
 sendForm.value = '';
 
  }
@@ -131,13 +131,13 @@ sendForm.value = '';
  const handlaime=async(myid)=>{
     
      if (!etat){
-         await axios.put(`post/likes/${user._id}`,{id:myid})
+         await apiClient.put(`post/likes/${user._id}`,{id:myid})
           setLikes(likes+1)
          setetat(true)
      }
  else{
     
-await axios.put(`post/dislikes/${user._id}`,{id:myid})
+await apiClient.put(`post/dislikes/${user._id}`,{id:myid})
      setLikes(likes-1)
      setetat(false)
  }

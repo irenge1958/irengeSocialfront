@@ -10,7 +10,7 @@ import HighlightOffSharpIcon from '@mui/icons-material/HighlightOffSharp';
 import { useState,useRef } from 'react';
 import {Usercontext} from '../../contextapi/contextlogin';
 import { useContext } from 'react';
-import axios from 'axios';
+import apiClient from "../../../apiclient";
    import { useMediaQuery } from 'react-responsive';
 const Post = () => {
  
@@ -63,7 +63,7 @@ if(myfile){
         uploadFile(myfile)
        
         if(newPost.postpicture){
-            await axios.post('post/createpost',newPost)
+            await apiClient.post('post/createpost',newPost)
             window.location.reload()  
         }
       

@@ -4,7 +4,7 @@ import {Usercontext} from '../contextapi/contextlogin';
 import { Link } from 'react-router-dom/cjs/react-router-dom';
 import HighlightOffSharpIcon from '@mui/icons-material/HighlightOffSharp';
 import './modalinfo.css'
-import axios from 'axios'
+import apiClient from '../../apiclient'
  const Modalinfo=({toggleModalInfo})=>{
     const {user}=useContext(Usercontext)
    const password=useRef()
@@ -16,22 +16,22 @@ import axios from 'axios'
     e.preventDefault()
    
     if(state.current.value){
-      await axios.put(`users/updateinfo/${user._id}`,{relationship:state.current.value})
+      await apiClient.put(`users/updateinfo/${user._id}`,{relationship:state.current.value})
      
     }
     if(password.current.value){
-      await axios.put(`users/updateinfo/${user._id}`,{password:password.current.value})
+      await apiClient.put(`users/updateinfo/${user._id}`,{password:password.current.value})
     }
     if(city.current.value){
-      await axios.put(`users/updateinfo/${user._id}`,{city:city.current.value,ati:'city'})
+      await apiClient.put(`users/updateinfo/${user._id}`,{city:city.current.value,ati:'city'})
     }
     if(username.current.value){
-      await axios.put(`users/updateinfo/${user._id}`,{username:username.current.value})
+      await apiClient.put(`users/updateinfo/${user._id}`,{username:username.current.value})
     }
     if(school.current.value){
-      await axios.put(`users/updateinfo/${user._id}`,{school:school.current.value})
+      await apiClient.put(`users/updateinfo/${user._id}`,{school:school.current.value})
     }
-    const res=await axios.get(`users/${user._id}`)
+    const res=await apiClient.get(`users/${user._id}`)
     localStorage.setItem('user', JSON.stringify(res.data));
     window.location.reload()
    }

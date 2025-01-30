@@ -6,7 +6,7 @@ import FavoriteSharpIcon from '@mui/icons-material/FavoriteSharp';
 import { useState,useEffect } from 'react';
 import {Usercontext} from '../../contextapi/contextlogin';
 import {format} from 'timeago.js'
-import axios from 'axios'
+import apiClient from "../../../apiclient";
 import {useLocation} from 'react-router-dom';
 import { useContext,useRef,useMemo } from 'react';
 import { Link } from "react-router-dom";
@@ -23,7 +23,7 @@ const Linkpost = () => {
   const [post,setPost]=useState({})
    useEffect( ()=>{
     const fetch=async()=>{
-      const res=await axios.get(`post/mypost/${posti._id}`) 
+      const res=await apiClient.get(`post/mypost/${posti._id}`) 
    console.log(res.data)
 setPost(res.data)
     }

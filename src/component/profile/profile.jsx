@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import app from '../../firebase';
 import { Usercontext } from '../contextapi/contextlogin';
-import axios from 'axios';
+import apiClient from '../../apiclient'
 import CameraAltRoundedIcon from '@mui/icons-material/CameraAltRounded';
 import './profile.css';
 
@@ -21,7 +21,7 @@ const Profile = () => {
     if (user._id !== id) {
       const fetchUser = async () => {
         try {
-          const res = await axios.get(`users/${id}`);
+          const res = await apiClient.get(`users/${id}`);
           setUpdatedUser(res.data);
         } catch (error) {
           console.error('Error fetching user:', error);
@@ -53,14 +53,14 @@ const Profile = () => {
           // Update the appropriate field based on the type
           if (type === 'profile') {
         
-            await axios.put(`post/profilepicture/${user._id}`, { postpic: downloadURL });
+            await apiClient.put(`post/profilepicture/${user._id}`, { postpic: downloadURL });
           } else if (type === 'cover') {
            
-            await axios.put(`post/coverpicture/${user._id}`, { postpic: downloadURL });
+            await apiClient.put(`post/coverpicture/${user._id}`, { postpic: downloadURL });
           }
 
           // Fetch the updated user data after the picture is uploaded
-          const res = await axios.get(`users/${user._id}`);
+          const res = await apiClient.get(`users/${user._id}`);
           if (res.data.profilepicture || res.data.coverpicture) {
             localStorage.setItem('user', JSON.stringify(res.data));
             setReload(true);

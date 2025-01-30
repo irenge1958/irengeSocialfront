@@ -2,7 +2,7 @@ import React from 'react'
 import './message.css'
 import { useContext,useState,useEffect,useRef } from 'react';
 import {Usercontext} from '../contextapi/contextlogin';
-import axios from 'axios'
+import apiClient from '../../apiclient'
 import {format} from 'timeago.js'
 
 import { useMediaQuery } from 'react-responsive';
@@ -15,7 +15,7 @@ const  Message=({own,a,currenttchat})=>{
 const myuser=currenttchat.members?.find((s)=>s!==user?._id )
 useEffect(()=>{
     const fecth=async()=>{
-     const res=await axios.get(`users/${myuser}`)
+     const res=await apiClient.get(`users/${myuser}`)
      setB(res.data)   
     }
 fecth()

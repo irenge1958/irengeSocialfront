@@ -6,11 +6,11 @@ import './toobar.css' ;
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import { useEffect,useState } from 'react';
 import {format} from 'timeago.js'
-import axios from 'axios'
+import apiClient from '../../apiclient'
 import CheckIcon from '@mui/icons-material/Check';
  const Modalnot=()=>{
     const setasread=async(id)=>{
-    await axios.put(`post/notification/${id}`)
+    await apiClient.put(`post/notification/${id}`)
   
 }
 
@@ -21,7 +21,7 @@ import CheckIcon from '@mui/icons-material/Check';
     useEffect(()=>{
         const fecth=async()=>{
          if(user.notifications.length){
-             const res=await axios.get(`post/not/${user.notifications}`)
+             const res=await apiClient.get(`post/not/${user.notifications}`)
              const mynot=all?res.data.filter((a)=>{return a.read===false}):res.data
              
        setnotifitio(mynot.sort((p1,p2)=>{
@@ -39,7 +39,7 @@ setAll(o)
    const readAll=async()=>{
     setMyview(false)
     notifitio.map(async(a)=>{
-        return await axios.put(`post/notification/${a._id}`)
+        return await apiClient.put(`post/notification/${a._id}`)
     })
     
     

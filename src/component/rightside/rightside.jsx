@@ -2,7 +2,7 @@ import React from 'react'
 import './rightside.css'
 import {Usercontext} from '../contextapi/contextlogin';
 import { useLocation} from 'react-router-dom';
-import axios from 'axios';
+import apiClient from '../../apiclient'
 import { useState,useEffect } from 'react';
 import { useContext } from 'react';
 import AddIcon from '@mui/icons-material/Add';
@@ -19,20 +19,20 @@ const Rightside = ({onlinefriend}) => {
 
   console.log(onlinefriend)
   const follow=async()=>{
-await axios.put(`users/follow/${user._id}`,{id:id,profilepicture:user.profilepicture,username:user.username})
-const newuser=await axios.get(`users/${user._id}`)
+await apiClient.put(`users/follow/${user._id}`,{id:id,profilepicture:user.profilepicture,username:user.username})
+const newuser=await apiClient.get(`users/${user._id}`)
         setupdateduser(newuser.data)
   }
   const unfollow=async()=>{
-    await axios.put(`users/unfollow/${user._id}`,{id:id})
-    const newuser=await axios.get(`users/${user._id}`)
+    await apiClient.put(`users/unfollow/${user._id}`,{id:id})
+    const newuser=await apiClient.get(`users/${user._id}`)
             setupdateduser(newuser.data)
       }
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const newuser=await axios.get(`users/${user._id}`)
-        const uservisit=await axios.get(`users/${id}`)
+        const newuser=await apiClient.get(`users/${user._id}`)
+        const uservisit=await apiClient.get(`users/${id}`)
         setguest(uservisit.data)
         setupdateduser(newuser.data)
   

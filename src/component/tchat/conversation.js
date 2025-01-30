@@ -1,5 +1,5 @@
 import React from 'react'
-import axios from 'axios';
+import apiClient from '../../apiclient'
 import { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 
 const Conversation = ({ myuse, user, socket, currentchat,online }) => {
@@ -12,7 +12,7 @@ const Conversation = ({ myuse, user, socket, currentchat,online }) => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const res = await axios.get(`users/${myuser}`);
+        const res = await apiClient.get(`users/${myuser}`);
         setA(res.data);
       } catch (error) {
         console.error('Error fetching user data:', error);
@@ -22,7 +22,7 @@ const Conversation = ({ myuse, user, socket, currentchat,online }) => {
     const fetchMessages = async () => {
       try {
         if(nb!==0){
-          const res = await axios.get(`tchat/message/${myuse._id}`);
+          const res = await apiClient.get(`tchat/message/${myuse._id}`);
         setNb2(res.data);
         }
         
@@ -70,7 +70,7 @@ setNb2((prev) => [...prev, arrivalMessage]);
   useEffect(() => {
     if (currentchat._id === myuse._id) {
       const getit=async()=>{
-        const res1=await axios.put(`tchat/marasread/${currentchat._id}`) 
+        const res1=await apiClient.put(`tchat/marasread/${currentchat._id}`) 
          setNb(0);
       }
       getit()
