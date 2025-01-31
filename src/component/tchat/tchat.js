@@ -4,7 +4,7 @@ import './tchat.css';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Message from "../message/message";
 import { Usercontext } from '../contextapi/contextlogin';
-import apiClient from '../../apiclient'
+import axios from 'axios';
 import Conversation from "./conversation";
 import { useMediaQuery } from 'react-responsive';
 
@@ -41,7 +41,7 @@ const Tchat = ({ socket, onlinefriend, allonlinefriend }) => {
 
     if (arrivalmessage.maconv?.date === '') {
       const getConversations = async () => {
-        const res = await apiClient.get(`/tchat/conversation/${user._id}`);
+        const res = await axios.get(`/tchat/conversation/${user._id}`);
         setMyfriend(res.data.sort((p1, p2) => new Date(p2.updatedAt) - new Date(p1.updatedAt)));
       };
       getConversations();
@@ -50,7 +50,7 @@ const Tchat = ({ socket, onlinefriend, allonlinefriend }) => {
 
   const handlesubmit = async (e) => {
     e.preventDefault();
-    const res = await apiClient.post(`tchat/message/${currenttchat._id}`, {
+    const res = await axios.post(`tchat/message/${currenttchat._id}`, {
       senderid: user._id,
       message: monmessage.current.value,
     });
@@ -70,7 +70,7 @@ const Tchat = ({ socket, onlinefriend, allonlinefriend }) => {
 
   useEffect(() => {
     const fetchConversations = async () => {
-      const res = await apiClient.get(`/tchat/conversation/${user?._id}`);
+      const res = await axios.get(`/tchat/conversation/${user?._id}`);
       setMyfriend(res.data.sort((p1, p2) => new Date(p2.updatedAt) - new Date(p1.updatedAt)));
     };
     fetchConversations();
@@ -78,7 +78,7 @@ const Tchat = ({ socket, onlinefriend, allonlinefriend }) => {
 
   const search = async (q) => {
     if (q) {
-      const myfriends = await apiClient.get(`users/search/${q}`);
+      const myfriends = await axios.get(`users/search/${q}`);
       setResults(myfriends.data);
     } else {
       setResults([]);
@@ -86,16 +86,16 @@ const Tchat = ({ socket, onlinefriend, allonlinefriend }) => {
   };
 
   const getconv = async (id, conv) => {
-    const res = await apiClient.get(`tchat/message/${id}`);
+    const res = await axios.get(`tchat/message/${id}`);
     if (message?.[message.length - 1]?.sender !== user._id) {
-      await apiClient.put(`tchat/marasread/${id}`);
+      await axios.put(`tchat/marasread/${id}`);
     }
 
     setCurrentchat(conv);
     setMessages(res.data);
 
     const myuser = conv.members?.find((s) => s !== user?._id);
-    const res2 = await apiClient.get(`users/${myuser}`);
+    const res2 = await axios.get(`users/${myuser}`);
     setB(res2.data);
   };
 
@@ -113,17 +113,17 @@ const Tchat = ({ socket, onlinefriend, allonlinefriend }) => {
     : { backgroundColor: 'white' };
 
   const monamie = async (id) => {
-    const res = await apiClient.get(`/tchat/messagefromconv/${user._id}/${id}`);
+    const res = await axios.get(`/tchat/messagefromconv/${user._id}/${id}`);
     const myconv = res.data[0]?._id;
 
     if (res.data.length !== 0) {
-      const res1 = await apiClient.get(`tchat/message/${myconv}`);
+      const res1 = await axios.get(`tchat/message/${myconv}`);
       setCurrentchat(res.data[0]);
       setMessages(res1.data);
     } else {
-      const res2 = await apiClient.post(`tchat/createconv/${user._id}/${id}`);
+      const res2 = await axios.post(`tchat/createconv/${user._id}/${id}`);
       if (res2.data) {
-        const res3 = await apiClient.get(`tchat/message/${res2.data._id}`);
+        const res3 = await axios.get(`tchat/message/${res2.data._id}`);
         setCurrentchat(res2.data);
         setMessages(res3.data);
       }
@@ -170,7 +170,80 @@ const Tchat = ({ socket, onlinefriend, allonlinefriend }) => {
                       }}
                     >
                       <img
-                        src={a.profilepicture ? `/assets/${a.profilepicture}` : '/assets/user.png'}
+                        src={a.profilepicture ?a.profilepicture: '/assets/user.png'}
+                        alt="onlineami"
+                        style={{
+                          position: 'relative',
+                          width: '40px',
+                          height: '40px',
+                          borderRadius: '50%',
+                          objectFit: 'cover',
+                          marginTop: '2px',
+                          cursor: 'pointer',
+                        }}
+                      />
+                      <p style={{ marginTop: '10px' }}>{a.username}</p>
+                    </div>
+                  ))
+                : myfriend?.map((a) => (
+                    <div
+                    key={a._id}
+                      className="myconv"
+                      onClick={() => getconv(a._id, a)}
+                      style={{
+                        display: 'flex',
+                        gap: '10px',
+                        marginTop: '10px',
+                        marginBottom: '10px',
+                        cursor: 'pointer',
+                        padding: '10px',
+                      }}
+                    >
+                      <Conversation
+                        user={user}
+                        myuse={a}
+                        online={allonlinefriend}
+                        socket={socket}
+                        notifcation={message}
+                        currentchat={currenttchat}
+                        key={a._id}
+                      />
+                    </div>
+                  ))}
+            </div>
+          )}
+          {isMobile && currenttchat ==='' && (
+            <div className="conversation">
+              <h1 style={{ marginTop: '10px' }}>Conversations</h1>
+              <input
+                type="text"
+                style={{
+                  border: 'none',
+                  borderBottom: '1px solid gray',
+                  marginTop: '30px',
+                  marginLeft: '10px',
+                }}
+                placeholder="Search for friends"
+                onChange={(e) => search(e.target.value)}
+              />
+              {/* Render Results */}
+              {result.length !== 0
+                ? result.map((a) => (
+                    <div
+                    key={a._id}
+                      className="myconv"
+                      onClick={() => monamie(a._id)}
+                      style={{
+                        display: 'flex',
+                        gap: '10px',
+                        marginTop: '10px',
+                        marginBottom: '10px',
+                        cursor: 'pointer',
+                        padding: '10px',
+                      }}
+                    >
+                      <img
+                        src={a.profilepicture ?a.profilepicture: '/assets/user.png'}
                         alt="onlineami"
                         style={{
                           position: 'relative',

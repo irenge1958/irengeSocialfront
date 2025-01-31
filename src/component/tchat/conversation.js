@@ -84,7 +84,7 @@ const onlinef=online.map((x)=>{
   return (
     <>
       <img
-        src={a.profilepicture ? `/assets/${a.profilepicture}` : '/assets/user.png'}
+        src={a.profilepicture ?a.profilepicture: '/assets/user.png'}
         alt="onlineami"
         style={{
           position: 'relative',
