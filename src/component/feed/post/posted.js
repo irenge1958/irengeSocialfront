@@ -202,7 +202,7 @@ return <>
          <div className="" style={{textAlign:'left',margin:'7px'}} >
     <div className=""  >
         <div className="" style={{display:'flex',gap:'10px'}}>
-    <img style={{width:'45px',height:'45px',borderRadius:'50%'}} src={a.profilepicture?`/assets/${a.profilepicture}`:'/assets/user.png'} />
+    <img style={{width:'45px',height:'45px',borderRadius:'50%'}} src={a.profilepicture?a.profilepicture:'/assets/user.png'} />
     <div style={{backgroundColor:'rgb(238, 234, 234)',padding:'8px 12px',borderRadius:'11%',width: 'max-content'}} >
     <p style={{fontWeight:'bold'}}>{a.username}</p>
      <p>{a.content}</p>
@@ -219,7 +219,7 @@ return <>
          <div className="" style={{textAlign:'left',margin:'7px'}} >
     <div className=""  >
         <div className="" style={{display:'flex',gap:'10px'}}>
-    <img style={{width:'45px',height:'45px',borderRadius:'50%'}} src={a.profilepicture?`/assets/${a.profilepicture}`:'/assets/user.png'} />
+    <img style={{width:'45px',height:'45px',borderRadius:'50%'}} src={a.profilepicture?a.profilepicture:'/assets/user.png'} />
     <div style={{backgroundColor:'rgb(238, 234, 234)',padding:'8px 12px',borderRadius:'11%',width: 'max-content'}} >
     <p style={{fontWeight:'bold'}}>{a.username}</p>
      <p>{a.content}</p>

@@ -127,7 +127,7 @@ color:'crimson'
             
             <form onSubmit={handlepost}>
                <div className='mypostup' style={{marginTop:'10px'}}>  
-            <img src={user.profilepicture?`/assets/${user.profilepicture}`:'/assets/user.png'} alt="PROFILE" />
+            <img src={user.profilepicture?user.profilepicture:'/assets/user.png'} alt="PROFILE" />
             <div className='post2' style={{marginLeft:'-5px'}} >
             <input style={{margin:'7px'}} placeholder='what is in your mind?' ref={desc} />
             </div>
