@@ -21,7 +21,7 @@ function App() {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const username = queryParams.get('username');
-  const socket = useRef(io('http://localhost:5000')); // Updated socket initialization
+  const socket = useRef(io('https://socketioforirengesocial-production.up.railway.app')); // Updated socket initialization
   const [onlinefriend, setOnlinfriend] = useState([]);
   const [allonlinefriend, setAllOnlinfriend] = useState([]);
   const [mynot] = useSound(notification);
