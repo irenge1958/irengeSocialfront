@@ -310,7 +310,7 @@ const Tchat = ({ socket, onlinefriend, allonlinefriend }) => {
             <h1>Online Friends</h1>
              {onlinefriend?.length!==0?onlinefriend?.map((x)=>{
                 return<div onClick={()=>monamie(x.user?._id)} style={{display:'flex',gap:'10px',marginTop:'10px',marginBottom:'10px',cursor:'pointer'}} >
-                <img src={x.user.profilepicture?`/assets/${x.user.profilepicture}`:'/assets/user.png'} alt="onlineami" style={{
+                <img src={x.user.profilepicture?x.user.profilepicture:'/assets/user.png'} alt="onlineami" style={{
              position: 'relative',
              width:'45px',
              height:'45px',
