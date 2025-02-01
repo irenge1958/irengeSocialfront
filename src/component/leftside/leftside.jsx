@@ -14,7 +14,7 @@ useEffect(()=>{
     const getfriend=async()=>{
        const res= await apiClient.get(`users/all/users`)
        const filterfriend=res.data.filter((a)=>{
-        return a.city===user.city && a._id!==user._id
+        return a.city===user.city && a._id!==user._id && !a.followers.includes(user._id)
        })
        setFriends(filterfriend)
     

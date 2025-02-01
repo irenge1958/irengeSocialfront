@@ -35,6 +35,13 @@ const Feed =() => {
                     response = await apiClient.get(`post/Timeline/${user._id}`, {
                       
                       });
+                      if(response.data.length===0){
+                        response = await apiClient.get('post/randomv', {
+                          headers: {
+                            'Cache-Control': 'no-cache' // Disable caching
+                          }
+                        });
+                      }
                 } if(video){
               
                   reponse=response.data.filter((a)=>{return getFileExtension(a.postpicture)==='mp4'})
