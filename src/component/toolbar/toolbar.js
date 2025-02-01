@@ -181,7 +181,7 @@ console.log({senderid,text,maconv})
                    
                    {firstresults.length>0 && found===false  && firstresults.map((a)=>{
                    return<>
-                    <div style={{border:'0.01px solid gray'}}></div>
+                    <div style={{border:'0.01px solid gray',zIndex:'199'}}></div>
                      <Link style={{ textDecoration: 'none',color:'black' }} to={`/?username=${a.username}&id=${a._id}`} >
                      <div className="searchpp" >
                 <div className="searched">
