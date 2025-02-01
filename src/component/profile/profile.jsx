@@ -117,7 +117,7 @@ const Profile = () => {
           </label>
           <img
             style={{ width: user.coverpicture ? '' : '100%' }}
-            src={user.coverpicture ? user.coverpicture : '/assets/skyscrapper.webp'}
+            src={user.coverpicture ? user.coverpicture : '/assets/1713064255659Dubai_Marina_Skyline.jpg'}
             className="back"
             alt="Cover Picture"
           />
@@ -129,7 +129,7 @@ const Profile = () => {
               width: updatedUser.coverpicture ? '' : '100%',
               maxWidth: updatedUser.coverpicture && '100%',
             }}
-            src={updatedUser.coverpicture ? updatedUser.coverpicture : '/assets/skyscrapper.webp'}
+            src={updatedUser.coverpicture ? updatedUser.coverpicture : '/assets/1713064255659Dubai_Marina_Skyline.jpg'}
             className="back"
             alt="Cover Picture"
           />
