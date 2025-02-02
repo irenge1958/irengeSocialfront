@@ -1,0 +1,16 @@
+.myfolandunfoli button{
+    background-color:#1872f2;cursor:pointer;border:none;width:max-content;padding-right:5px;padding-left:7px;height:32px;border-radius:5px;color:white;font-weight:500;font-size:16px;align-items:center;text-align:center
+}
+.descrie{
+    font-weight: 100;
+    font-size:24px;
+    margin-bottom: 3px;
+    user-select: none;
+    align-items: left;
+    text-align:left
+    }
+    .descrie p{
+        margin-top: 4px;
+        color:#a0a0a0;
+        user-select: none;
+    }

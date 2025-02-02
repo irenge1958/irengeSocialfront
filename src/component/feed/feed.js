@@ -1,10 +1,13 @@
 import React from "react"; // Required for JSX in React < 17
 import Post from './post/post'
+import './feed.css'
 import Posted from './post/posted'
 import { useContext,useEffect,useState } from 'react';
 import {Usercontext} from '../contextapi/contextlogin';
 import { useLocation} from 'react-router-dom';
 import apiClient from '../../apiclient'
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
 
 const Feed =() => {
     const location = useLocation();
@@ -13,7 +16,19 @@ const Feed =() => {
     const id = queryParams.get('id');
     const video = queryParams.get('video');  
     const {user,isfetching,error}=useContext(Usercontext);
+    const [updateduser,setupdateduser]=useState(user)
     const [posts, setPosts] = useState([]);
+    const [guest,setguest]=useState({})
+    const follow=async()=>{
+      await apiClient.put(`users/follow/${user._id}`,{id:id,profilepicture:user.profilepicture,username:user.username})
+      const newuser=await apiClient.get(`users/${user._id}`)
+              setupdateduser(newuser.data)
+        }
+        const unfollow=async()=>{
+          await apiClient.put(`users/unfollow/${user._id}`,{id:id})
+          const newuser=await apiClient.get(`users/${user._id}`)
+                  setupdateduser(newuser.data)
+            }
     useEffect(() => {
       function getFileExtension(filename) {
         
@@ -27,13 +42,17 @@ const Feed =() => {
                 let reponse
                 if (id) {
                    response = await apiClient.get(`post/seepost/${id}`, {
-                  
+                    headers: {
+                      'Cache-Control': 'no-cache' // Disable caching
+                    }
                   });;
                 }
              
                 else {
                     response = await apiClient.get(`post/Timeline/${user._id}`, {
-                      
+                        headers: {
+                          'Cache-Control': 'no-cache' // Disable caching
+                        }
                       });
                       if(response.data.length===0){
                         response = await apiClient.get('post/randomv', {
@@ -62,12 +81,60 @@ const Feed =() => {
 
         fetchPosts();
     }, [username, user.username, user._id,video]);
-
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const newuser=await apiClient.get(`users/${user._id}`)
+          const uservisit=await apiClient.get(`users/${id}`)
+          setguest(uservisit.data)
+          setupdateduser(newuser.data)
+    
+            
+        } catch (error) {
+          // Handle error
+          console.error('Error fetching user data:', error);
+        }
+      };
+  
+      fetchData(); // Call the function immediately when the component renders
+  
+      // Optionally, return a cleanup function if needed
+      // return () => {
+      //   // Cleanup code (if needed)
+      // };
+    }, [id]);
     return ( <div className="wrapperfeed">
+<div className="descrie" style={{marginTop:'-50px',marginBottom:'10px'}}>
+                <p>City:{user.city?user.city:'--'}</p>
+                <p>From:{user.from?user.from:'--'}</p>
+                <p>Went to:{user.school?user.school:'--'}</p>
+                <p>relationship:{user.relationship?user.relationship:'--'}</p>
+         </div>
+      {user._id!==id && <div className="myfolandunfoli" style={{ display: "flex",
+    justifyContent: "center", // Centers horizontally
+    alignItems: "center", // Centers vertically
+  
+  }}>
+    
+      <div className="descrie" style={{display:'flex',gap:'20px'}}>
+      {updateduser.followings.includes(id)?<button style={{display:'flex',gap:'2px'}} onClick={unfollow}>Unfollow <RemoveIcon /></button>:<button style={{display:'flex',gap:'2px'}} onClick={follow}>Follow <AddIcon /></button>}  
+                <p>Followers:{id?guest.followers?.length:updateduser.followers?.length}</p>
+                <p>Followings:{id?guest.followings?.length:updateduser.followings?.length}</p>
+                </div>
+      
+            </div>}  
+            <hr style={{
+ height: "3px",
+ width: "95%",
+ backgroundColor: "#b0b0b0", // Light gray
+ border: "none", // Remove default border
+ margin: "20px auto", // Center horizontally
+ borderRadius: "5px" // Smooth edges
+}}></hr>
      {(username===user.username || username==null) && <Post />}
  {posts.length>0 ? posts.map(post => (
-  <Posted key={post._id} post={post} />
-)):<div style={{postion:'relative',marginTop:'30px'}}><div style={{marginTop:'15%',fontWeight:'500',fontSize:'24px'}}>No post</div></div>}   
+  <Posted key={post._id}  post={post} />
+)):<div style={{postion:'relative',marginTop:'30px'}}><div style={{marginTop:'5%',fontWeight:'500',fontSize:'24px'}}>No post</div></div>}   
 
     
     </div> );
