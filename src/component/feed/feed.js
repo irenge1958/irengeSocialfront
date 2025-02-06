@@ -42,7 +42,7 @@ const Feed =() => {
                 let response;
                 let reponse
                 if (id) {
-                   response = await apiClient.get(`share/seepost/${id}`, {
+                   response = await apiClient.get(`post/seepost/${id}`, {
                     headers: {
                       'Cache-Control': 'no-cache' // Disable caching
                     }
@@ -50,13 +50,13 @@ const Feed =() => {
                 }
              
                 else {
-                    response = await apiClient.get(`share/Timeline/${user._id}`, {
+                    response = await apiClient.get(`post/Timeline/${user._id}`, {
                         headers: {
                           'Cache-Control': 'no-cache' // Disable caching
                         }
                       });
                       if(response.data.length===0){
-                        response = await apiClient.get('share/randomv', {
+                        response = await apiClient.get('post/randomv', {
                           headers: {
                             'Cache-Control': 'no-cache' // Disable caching
                           }
