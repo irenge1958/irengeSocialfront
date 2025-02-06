@@ -42,25 +42,13 @@ const Feed =() => {
                 let response;
                 let reponse
                 if (id) {
-                   response = await apiClient.get(`post/seepost/${id}`, {
-                    headers: {
-                      'Cache-Control': 'no-cache' // Disable caching
-                    }
-                  });;
+                   response = await apiClient.get(`post/seepost/${id}`);
                 }
              
                 else {
-                    response = await apiClient.get(`post/Timeline/${user._id}`, {
-                        headers: {
-                          'Cache-Control': 'no-cache' // Disable caching
-                        }
-                      });
+                    response = await apiClient.get(`post/Timeline/${user._id}`);
                       if(response.data.length===0){
-                        response = await apiClient.get('post/randomv', {
-                          headers: {
-                            'Cache-Control': 'no-cache' // Disable caching
-                          }
-                        });
+                        response = await apiClient.get('post/randomv');
                       }
                 } if(video){
               
@@ -85,16 +73,8 @@ const Feed =() => {
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const newuser=await apiClient.get(`users/${user._id}`, {
-            headers: {
-              'Cache-Control': 'no-cache' // Disable caching
-            }
-          });
-          const uservisit=await apiClient.get(`users/${id}`, {
-            headers: {
-              'Cache-Control': 'no-cache' // Disable caching
-            }
-          });
+          const newuser=await apiClient.get(`users/${user._id}`);
+          const uservisit=await apiClient.get(`users/${id}`);
           setguest(uservisit.data)
           setupdateduser(newuser.data)
           
