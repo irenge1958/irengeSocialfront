@@ -85,11 +85,19 @@ const Feed =() => {
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const newuser=await apiClient.get(`users/${user._id}`)
-          const uservisit=await apiClient.get(`users/${id}`)
+          const newuser=await apiClient.get(`users/${user._id}`, {
+            headers: {
+              'Cache-Control': 'no-cache' // Disable caching
+            }
+          });
+          const uservisit=await apiClient.get(`users/${id}`, {
+            headers: {
+              'Cache-Control': 'no-cache' // Disable caching
+            }
+          });
           setguest(uservisit.data)
           setupdateduser(newuser.data)
-    
+          
             
         } catch (error) {
           // Handle error
