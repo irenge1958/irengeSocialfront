@@ -74,8 +74,11 @@ const Feed =() => {
       const fetchData = async () => {
         try {
           const newuser=await apiClient.get(`users/${user._id}`);
-          const uservisit=await apiClient.get(`users/${id}`);
+          if(id){
+             const uservisit=await apiClient.get(`users/${id}`);
           setguest(uservisit.data)
+          }
+         
           setupdateduser(newuser.data)
           
             

@@ -28,7 +28,10 @@ return(
     <div className="mymessages">
        
 <div className="mytexte" style={margin}>
- <img src={own?user.profilepicture?user?.profilepicture:'/assets/user.png':b.profilepicture?b.profilepicture:'/assets/user.png'} style={{
+ <img src={own 
+  ? user?.profilepicture || '/assets/user.png' 
+  : b?.profilepicture || '/assets/user.png'
+} style={{
      position: 'relative',
      width:'40px',
      height:'40px',

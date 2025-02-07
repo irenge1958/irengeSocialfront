@@ -34,7 +34,7 @@ import './toobar.css' ;
         <Link style={{ textDecoration: 'none',color:'black' }} to={`/?username=${user?.username}&id=${user?._id}`} >
         <span style={{display:'flex',gap:'10px',marginBottom:'10px'}}>
 
-        <img style={{ borderRadius: '50%',width: '50px',height: '50px',objectFit: 'cover'}} src={user?.profilepicture?`/assets/${user?.profilepicture}`:'/assets/user.png'}  alt="PROFILE" /><p style={{marginTop:'15px',fontWeight:'bolder'}}>{user?.username}</p>
+        <img style={{ borderRadius: '50%',width: '50px',height: '50px',objectFit: 'cover'}} src={user?.profilepicture?user?.profilepicture:'/assets/user.png'}  alt="PROFILE" /><p style={{marginTop:'15px',fontWeight:'bolder'}}>{user?.username}</p>
        </span>
 </Link>
         <hr></hr>
