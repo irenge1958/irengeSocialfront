@@ -131,7 +131,7 @@ const Tchat = ({ socket, onlinefriend, allonlinefriend }) => {
   };
 
   const onlinef = allonlinefriend.map((x) => x.user._id);
-
+console.log(b.profilepicture)
   return (
     <>
       <div className="mychat" style={{ overflow: 'hidden' }}>
@@ -286,7 +286,7 @@ const Tchat = ({ socket, onlinefriend, allonlinefriend }) => {
             </div>
           )}
     {!isMobile && <div className="tchat">
-            {currenttchat !=='' && <div style={{display:'flex',gap:'10px',padding:'5px',backgroundColor:'rgb(201, 201, 201)'}}>   <img style={{width:'40px',height:'40px',borderRadius: '50%',objectFit: 'cover',marginTop: '8px'}} src={b.profilepicture?`/assets/${b?.profilepicture}`:'/assets/user.png'} />{onlinef.includes(b._id) && <span style={{marginTop:'5px',marginLeft:'-22px',width:'8px',height:'8px',border:'3px solid white'}} className="onlinbagee" ></span>}<p style={{marginTop:'15px',fontWeight:'bolder'}}>{b?.username}</p></div>}
+            {currenttchat !=='' && <div style={{display:'flex',gap:'10px',padding:'5px',backgroundColor:'rgb(201, 201, 201)'}}>   <img style={{width:'40px',height:'40px',borderRadius: '50%',objectFit: 'cover',marginTop: '8px'}} src={b.profilepicture?b.profilepicture:'/assets/user.png'} />{onlinef.includes(b._id) && <span style={{marginTop:'5px',marginLeft:'-22px',width:'8px',height:'8px',border:'3px solid white'}} className="onlinbagee" ></span>}<p style={{marginTop:'15px',fontWeight:'bolder'}}>{b?.username}</p></div>}
                 <div className="mymessagess"  ref={scrollref}>   
                 {message?.map((a)=>{return<Message own={a.sender===user._id?true:false} a={a} currenttchat={currenttchat} />})}
                 </div> 
