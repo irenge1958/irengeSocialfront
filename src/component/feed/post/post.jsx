@@ -116,7 +116,7 @@ color:'crimson'
   <source src={URL.createObjectURL(myfile)} type="video/mp4" />
 
   Your browser does not support the video tag.
-</video>:<img src={URL.createObjectURL(myfile)} />} <HighlightOffSharpIcon className='closepost' onClick={()=>SetMyfile(null)} /> </div>}
+</video>:<img src={URL.createObjectURL(myfile)} />} <HighlightOffSharpIcon style={{color:'red'}} className='closepost' onClick={()=>SetMyfile(null)} /> </div>}
            {!isMobile &&  <div className='mypostdown1'>
             <div className='mypostdown'>
           <label htmlFor='file1'><div className='mediapost'><span style={red}><PermMediaSharpIcon /></span> <p>Photo et video</p>   <input type='file' id='file1' accept='.png,.jpeg,.jpg,.mp4' style={view} onChange={(e)=>SetMyfile(e.target.files[0])} /></div></label> 
@@ -131,13 +131,14 @@ color:'crimson'
             <div className='post2' style={{marginLeft:'-5px'}} >
             <input style={{margin:'7px'}} placeholder='what is in your mind?' ref={desc} />
             </div>
-            <label htmlFor='file1' style={{marginTop:'20px',marginLeft:'10px'}}><div className='mediapost'><span style={{position:'absolute',color:'red',marginLeft:'-40px'}}><PermMediaSharpIcon /></span> <input type='file' id='file1' accept='.png,.jpeg,.jpg,.mp4' style={view} onChange={(e)=>SetMyfile(e.target.files[0])} /></div></label> 
+            {!myfile?<label htmlFor='file1' style={{marginTop:'20px',marginLeft:'10px'}}><div className='mediapost'><span style={{position:'absolute',color:'red',marginLeft:'-40px'}}><PermMediaSharpIcon /></span> <input type='file' id='file1' accept='.png,.jpeg,.jpg,.mp4' style={view} onChange={(e)=>SetMyfile(e.target.files[0])} /></div></label>:<div style={{marginTop:'18px',marginLeft:'10px'}}><button  style={{position:'absolute',marginLeft:'-39px', backgroundColor:'rgb(0, 230, 122)',innerHeight:'80px',borderRadius:'38px',cursor:"pointer",padding:'5px',border:'none'}} onClick={handlepost}>Post</button></div>} 
+
    </div>
             {myfile && <div className='mypostmidx' >{getFileExtension(myfile)==='mp4'?<video width="600" controls>
   <source src={URL.createObjectURL(myfile)} type="video/mp4" />
 
   Your browser does not support the video tag.
-</video>:<img src={URL.createObjectURL(myfile)} />} <HighlightOffSharpIcon className='closepost' onClick={()=>SetMyfile(null)} /> </div>}
+</video>:<img src={URL.createObjectURL(myfile)} />} <HighlightOffSharpIcon style={{color:'red'}} className='closepost' onClick={()=>SetMyfile(null)} /> </div>}
            {!isMobile &&  <div className='mypostdown1'>
             <div className='mypostdown'>
           <label htmlFor='file1'><div className='mediapost'><span style={red}><PermMediaSharpIcon /></span> <p>Photo et video</p>   <input type='file' id='file1' accept='.png,.jpeg,.jpg,.mp4' style={view} onChange={(e)=>SetMyfile(e.target.files[0])} /></div></label> 
