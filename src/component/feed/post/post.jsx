@@ -11,6 +11,7 @@ import { useState,useRef } from 'react';
 import {Usercontext} from '../../contextapi/contextlogin';
 import { useContext } from 'react';
 import apiClient from "../../../apiclient";
+import EmojiPickerComponent from './EmojiPickerComponent'
    import { useMediaQuery } from 'react-responsive';
 const Post = () => {
  
@@ -23,11 +24,21 @@ const Post = () => {
     const{user}=useContext(Usercontext)
     const [myfile,SetMyfile]=useState(null)
     const desc=useRef('')
+    const [mydesc,setMydesc]=useState(desc.current.value)
+    const handleSelectEmoji = (selectedEmoji) => {
+        if(desc.current.value!==''){
+            setMydesc((prevContent) => prevContent + selectedEmoji);
+        }
+        else{
+            setMydesc(selectedEmoji)
+        }
+       
+      }; 
 const [newPost,setNewPost]=useState({})
     const handlepost=async(e)=>{
         e.preventDefault()
         setNewPost({
-            desc:desc.current.value,
+            desc:mydesc,
             user_id:user._id,
             profilepicture:user.profilepicture,
             username:user.username
@@ -120,7 +131,10 @@ color:'crimson'
            {!isMobile &&  <div className='mypostdown1'>
             <div className='mypostdown'>
           <label htmlFor='file1'><div className='mediapost'><span style={red}><PermMediaSharpIcon /></span> <p>Photo et video</p>   <input type='file' id='file1' accept='.png,.jpeg,.jpg,.mp4' style={view} onChange={(e)=>SetMyfile(e.target.files[0])} /></div></label> 
-           </div > <button style={share}>share</button></div>}
+          
+           </div >
+           <EmojiPickerComponent onSelectEmoji={handleSelectEmoji} />
+            <button style={share}>share</button></div>}
             </form>
         </div>}
         {isMobile &&         <div >
