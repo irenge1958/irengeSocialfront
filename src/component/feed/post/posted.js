@@ -182,8 +182,8 @@ couper()
             <div className='myb3'>{post.Desc}</div>
             {post.Desc&&<br></br>}
             
-           <div className='mypostmid' >{getFileExtension(post.postpicture)==='mp4'?<video className='myVideo'  width="100%" muted controls>
-  <source src={PF+post.postpicture} type="video/mp4" />
+           <div className='mypostmid' >{post.postpicture.includes('.mp4')?<video className='myVideo'  width="100%" muted controls>
+  <source src={post.postpicture} type="video/mp4" />
 
   Your browser does not support the video tag.
 </video>:<img src={post.postpicture} />} </div>

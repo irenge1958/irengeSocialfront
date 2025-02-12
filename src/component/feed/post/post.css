@@ -33,6 +33,10 @@ border-radius: 50px;
     width: 100%;
     height:100%;
 }
+.mypostmidx video{
+    width: 100%;
+    height:100%;
+}
 .mypostup{
     display: flex;
     gap: 8px;
@@ -44,6 +48,7 @@ border-radius: 50px;
     height: 50px;
     object-fit: cover;
 }
+
 .mypostup input{
     border: none;
 }
@@ -60,7 +65,9 @@ border-radius: 50px;
     position: relative;
     display: flex;
     gap:120px;
-   margin: 35px;
+   margin-top: 30px;
+   margin-bottom:30px;
+   margin-left: 60px;
 }
 .mypostdown{
     display: flex;
@@ -78,5 +85,5 @@ border-radius: 50px;
     position:absolute;
     cursor:pointer;
     right:0;
-  
+    color:red
 }

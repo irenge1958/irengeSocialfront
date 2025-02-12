@@ -113,7 +113,9 @@ color:'crimson'
         const parts = filename.name.split('.');
         return parts.length > 1 ? parts.pop() : '';
       }
-      
+      const handleChange = (e) => {
+        setMydesc(e.target.value); // Update the state on input change
+      };
     return (
         <div>
 { !isMobile && <div className='post1'>
@@ -121,7 +123,7 @@ color:'crimson'
             <form onSubmit={handlepost}>
             <div className='mypostup'>
             <img src={user.profilepicture?user.profilepicture:'/assets/user.png'} alt="PROFILE" />
-            <input value={mydesc} placeholder='what is in your mind?' ref={desc} />
+            <input value={mydesc} placeholder='what is in your mind?' ref={desc} onChange={handleChange}/>
             </div>
             <hr></hr>
             {myfile && <div className='mypostmidx' >{getFileExtension(myfile)==='mp4'?<video width="600" controls>
