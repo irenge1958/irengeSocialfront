@@ -121,7 +121,7 @@ color:'crimson'
             <form onSubmit={handlepost}>
             <div className='mypostup'>
             <img src={user.profilepicture?user.profilepicture:'/assets/user.png'} alt="PROFILE" />
-            <input placeholder='what is in your mind?' ref={desc} />
+            <input value={mydesc} placeholder='what is in your mind?' ref={desc} />
             </div>
             <hr></hr>
             {myfile && <div className='mypostmidx' >{getFileExtension(myfile)==='mp4'?<video width="600" controls>
@@ -131,7 +131,7 @@ color:'crimson'
 </video>:<img src={URL.createObjectURL(myfile)} />} <HighlightOffSharpIcon style={{color:'red'}} className='closepost' onClick={()=>SetMyfile(null)} /> </div>}
            {!isMobile &&  <div className='mypostdown1'>
             <div className='mypostdown'>
-          <label htmlFor='file1'><div className='mediapost'><span style={red}><PermMediaSharpIcon /></span> <p>Photo et video</p>   <input type='file' value={mydesc} id='file1' accept='.png,.jpeg,.jpg,.mp4' style={view} onChange={(e)=>SetMyfile(e.target.files[0])} /></div></label> 
+          <label htmlFor='file1'><div className='mediapost'><span style={red}><PermMediaSharpIcon /></span> <p>Photo et video</p>   <input type='file'  id='file1' accept='.png,.jpeg,.jpg,.mp4' style={view} onChange={(e)=>SetMyfile(e.target.files[0])} /></div></label> 
           
            </div >
            <EmojiPickerComponent onSelectEmoji={handleSelectEmoji} />
