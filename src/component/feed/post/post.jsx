@@ -26,6 +26,7 @@ const Post = () => {
     const desc=useRef('')
     const [mydesc,setMydesc]=useState(desc.current.value)
     const handleSelectEmoji = (selectedEmoji) => {
+        console.log(selectedEmoji)
         if(desc.current.value!==''){
             setMydesc((prevContent) => prevContent + selectedEmoji);
         }

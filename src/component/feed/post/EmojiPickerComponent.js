@@ -9,7 +9,7 @@ const EmojiPickerComponent = ({ onSelectEmoji }) => {
 
   const handleEmojiClick = (event, emojiObject) => {
     console.log('Selected Emoji:', event.emoji );
-    onSelectEmoji( event.emoji); // Pass emoji to parent component
+    onSelectEmoji(event.emoji); // Pass emoji to parent component
     setIsPickerOpen(false); // Close picker after selection
   };
 
