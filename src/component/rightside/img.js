@@ -9,7 +9,7 @@ import React from "react";
     const [b,sb]=useState({})
 
     const followings=async()=>{
-        const res= await apiClien.get(`users/${a}`)
+        const res= await apiClient.get(`users/${a}`)
         sb(res.data)
        }
   useEffect(()=>{
