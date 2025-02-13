@@ -96,7 +96,7 @@ const newuser=await apiClient.get(`users/${user._id}`)
    </>:<>{guest.followings?.length===0 ?<div>0 followings</div>:<div class="image-grid">{guest.followings?.map((a)=>{
         return <div>
         
-            <Image a={a} index={a._id} />
+            <Image a={a} index={a?._id} />
       
         </div>})}
        
