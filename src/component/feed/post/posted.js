@@ -163,7 +163,7 @@ const couper=()=>{
       );
 }
 const copyf=(lien)=>{
-navigator.clipboard.writeText('localhost:3000/linkpost?mypost='+lien)
+navigator.clipboard.writeText('https://irenge-socialfront-1eby.vercel.app/linkpost?mypost='+lien)
 setmycpy('Copied')
 couper()
 } 

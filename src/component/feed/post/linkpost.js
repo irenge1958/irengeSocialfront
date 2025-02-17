@@ -19,7 +19,7 @@ const Linkpost = () => {
     const posti = JSON.parse(queryParams.get('mypost'));
     console.log(typeof posti)
     console.log(posti)
-    const PF=process.env.REACT_APP_PUBLIC_FOLDER
+
   const [post,setPost]=useState({})
    useEffect( ()=>{
     const fetch=async()=>{
@@ -41,7 +41,7 @@ fetch()
                {!post?<div style={{textAlign:'center',alignItems:'center'}}>This post is no longer available</div>:
 
    <div className='photo'><div className='mypostmidxx' >{getFileExtension(post.postpicture)==='mp4'?<video className='myVideo'  width="100%" muted controls>
-  <source src={PF+post.postpicture} type="video/mp4" />
+  <source src={post.postpicture} type="video/mp4" />
 
   Your browser does not support the video tag.
 </video>:<img src={post.postpicture} /> }</div>
