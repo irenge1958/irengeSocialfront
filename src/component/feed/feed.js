@@ -47,9 +47,9 @@ const Feed =() => {
              
                 else {
                     response = await apiClient.get(`post/Timeline/${user._id}`);
-
-                      if(response.data.length<10){
-                        const responsess = await apiClient.get('post/randomv');
+                    const responsess = await apiClient.get('post/randomv');
+                      if( response && response.data.length<10 && responsess.data.length>=10){
+                        
     
                         // Filter out posts from responsess that already exist in response.data
                         const newPosts = responsess.data.filter(post => 
