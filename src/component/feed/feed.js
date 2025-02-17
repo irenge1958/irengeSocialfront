@@ -47,21 +47,11 @@ const Feed =() => {
              
                 else {
                     response = await apiClient.get(`post/Timeline/${user._id}`);
-                    const responsess = await apiClient.get('post/randomv');
-                      if(response.data.length<10 && responsess.data.length>=10){
-                        
-    
-                        // Filter out posts from responsess that already exist in response.data
-                        const newPosts = responsess.data.filter(post => 
-                            !response.data.some(existingPost => existingPost._id === post._id)
-                        );
-                        
-                        // Concatenate the new unique posts to the response
-                        response = response.data.concat(newPosts);
+                      if(response.data.length<10){
+                        response = await apiClient.get('post/randomv');
                       }
-                     
-                } 
-                if(video){
+                   
+                } if(video){
               
                   reponse=response.data.filter((a)=>{return getFileExtension(a.postpicture)==='mp4'})
                  
