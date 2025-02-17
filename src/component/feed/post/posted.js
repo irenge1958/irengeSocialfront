@@ -88,7 +88,7 @@ const mybody={
 }
 setUsercomment(content.current.value)
 const res=await apiClient.put(`post/comment/${comm.ids}`,mybody)
-sendForm.value = '';
+content.current.value=''
 
  }
 

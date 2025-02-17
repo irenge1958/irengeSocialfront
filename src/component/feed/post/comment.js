@@ -122,7 +122,7 @@ const mybody={
 }
 setUsercomment(content.current.value)
 const res=await apiClient.put(`post/comment/${comm.ids}`,mybody)
-sendForm.value = '';
+content.current.value=''
 
  }
 
@@ -205,7 +205,7 @@ return <>
         }) } 
             <div className="mycom">
             <form className="mycomf" onSubmit={(e)=>com({ids:user._id,idp:post._id},e)}>
-               <input type="text" id='send' ref={content} placeholder="comment here" style={{fontSize:'15px'}} required/>  <button type='submit' style={{border:'none',background:'white'}}><SendSharpIcon  /> </button>
+               <input type="text" id='send' ref={content} placeholder="comment here" style={{fontSize:'15px'}} required/>  <button type='submit' style={{border:'none',background:'white',cursor:'pointer'}}><SendSharpIcon  /> </button>
             </form></div>
             <div></div>
        </div>
