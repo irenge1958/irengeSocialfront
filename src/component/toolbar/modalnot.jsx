@@ -68,7 +68,7 @@ setAll(o)
                   
                     <Link style={{ textDecoration: 'none',color:'black' }} to={a?.link} >
              
-                <div style={a?.read?mesnotall:mesnonvue} onClick={()=>setasread(a._id)}> <img style={{width:'45px',height:'45px',borderRadius:'50%'}} src={a?.profilepicture?`/assets/${a.profilepicture}`:'/assets/user.png'} /><div style={{display:'flex',gap:'10px',paddingTop:'5px'}}><p style={{fontWeight:'bolder'}}>{a?.username}</p><span>{a?.message}</span><span>{format(a?.createdAt)}</span></div></div>   </Link>)
+                <div style={a?.read?mesnotall:mesnonvue} onClick={()=>setasread(a._id)}> <img style={{width:'45px',height:'45px',borderRadius:'50%'}} src={a?.profilepicture?a.profilepicture:'/assets/user.png'} /><div style={{display:'flex',gap:'10px',paddingTop:'5px'}}><p style={{fontWeight:'bolder'}}>{a?.username}</p><span>{a?.message}</span><span>{format(a?.createdAt)}</span></div></div>   </Link>)
            
           })}
             <div style={{justifyContent:'center',textAlign:'center'}}>{notifitio.length===0 &&  '0 notification' }</div>
