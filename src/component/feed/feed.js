@@ -52,7 +52,7 @@ const Feed =() => {
                       }
                    
                 } if(video){
-              
+                  alert('hello')
                   reponse=response.data.filter((a)=>{return getFileExtension(a.postpicture)==='mp4'})
                   if(reponse.length<10){
                     reponse = await apiClient.get('post/randomv');
