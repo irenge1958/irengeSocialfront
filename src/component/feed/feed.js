@@ -15,6 +15,7 @@ const Feed =() => {
     const username = queryParams.get('username'); 
     const id = queryParams.get('id');
     const video = queryParams.get('video');  
+    
     const {user,isfetching,error}=useContext(Usercontext);
     const [updateduser,setupdateduser]=useState(user)
     const [posts, setPosts] = useState([]);
@@ -52,11 +53,11 @@ const Feed =() => {
                       }
                    
                 } if(video){
-                  alert('hello')
-                  reponse=response.data.filter((a)=>{return getFileExtension(a.postpicture)==='mp4'})
+                  
+                  reponse=response.data.filter((a)=>{return a.postpicture.includes('mp4')})
                   if(reponse.length<10){
                     reponse = await apiClient.get('post/randomv');
-                    reponse =reponse.data.filter((a)=>{return getFileExtension(a.postpicture)==='mp4'})
+                    reponse=reponse.data?.filter((a)=>{return a.postpicture.includes('mp4')})
                   }
                   setPosts(reponse.sort((p1,p2)=>{
                     return new Date(p2.createdAt)-new Date(p1.createdAt)
