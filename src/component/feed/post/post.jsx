@@ -13,11 +13,12 @@ import { useContext } from 'react';
 import apiClient from "../../../apiclient";
 import EmojiPickerComponent from './EmojiPickerComponent'
    import { useMediaQuery } from 'react-responsive';
+   import CircularProgressBar from './progress'
 const Post = () => {
  
    
     
-       
+    const [myprogress,setmyprogress]=useState(0)
         const isDesktop = useMediaQuery({ minWidth: 1224 });
         const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1224 });
         const isMobile = useMediaQuery({ maxWidth: 767 });
@@ -48,7 +49,7 @@ const [newPost,setNewPost]=useState({})
 if(myfile){
    
 
-    try {
+
         const uploadFile = (file) => {
         
             const storage = getStorage(app);
@@ -59,7 +60,7 @@ if(myfile){
             uploadTask.on('state_changed',
                 (snapshot) => {
                     const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                 
+                    setmyprogress(progress)
                 },
                 (error) => {
                     console.error(error);
@@ -74,18 +75,26 @@ if(myfile){
         };
         uploadFile(myfile)
        
-        if(newPost.postpicture){
-            await apiClient.post('post/createpost',newPost)
-            window.location.reload()  
-        }
-      
-    } catch (err) {
-        // Handle error
-        console.log('Error uploading file:', err.response.data);
-    }      
+        
 }
 
     }
+    useEffect(()=>{
+        const fetch=async()=>{
+            try { 
+        await apiClient.post('post/createpost',newPost)
+        window.location.reload()  
+    
+    } catch (err) {
+    // Handle error
+    console.log('Error uploading file:', err.response.data);
+    } 
+        }
+        if(newPost.postpicture){
+           fetch() 
+        }
+    
+    },[newPost.postpicture])
     const red={
 color:'crimson'
     }
@@ -118,6 +127,18 @@ color:'crimson'
       };
     return (
         <div>
+             {myprogress!==0 && <div style={{ position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100vh',
+            backgroundColor: 'rgba(0, 0, 0, 0.6)', // Dark background with transparency
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            zIndex: 1000,  }}>
+      <CircularProgressBar progress={myprogress} />
+    </div>}
 { !isMobile && <div className='post1'>
             
             <form onSubmit={handlepost}>
