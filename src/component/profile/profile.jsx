@@ -6,7 +6,7 @@ import { Usercontext } from '../contextapi/contextlogin';
 import apiClient from '../../apiclient'
 import CameraAltRoundedIcon from '@mui/icons-material/CameraAltRounded';
 import './profile.css';
-
+import CircularProgressBar from '../feed/post/progress'
 const Profile = () => {
   const location = useLocation();
   const { user } = useContext(Usercontext);
@@ -15,13 +15,13 @@ const Profile = () => {
   const id = queryParams.get('id');
   const [updatedUser, setUpdatedUser] = useState({});
   const [reload, setReload] = useState(false);
-
+  const [myprogress,setmyprogress]=useState(0)
   // Fetch the updated user data when user._id doesn't match
   useEffect(() => {
     if (user._id !== id) {
       const fetchUser = async () => {
         try {
-          const res = await apiClient.get(`users/${id}`);
+          const res = await  apiClient.get(`users/${id}`);
           setUpdatedUser(res.data);
         } catch (error) {
           console.error('Error fetching user:', error);
@@ -39,28 +39,29 @@ const Profile = () => {
       const storageRef = ref(storage, fileName);
       const uploadTask = uploadBytesResumable(storageRef, file);
 
-      uploadTask.on(
-        'state_changed',
-        (snapshot) => {
-          // Optional: track progress here if necessary
-        },
-        (error) => {
-          console.error(error);
-        },
+        uploadTask.on('state_changed',
+                (snapshot) => {
+                    const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                    setmyprogress(progress)
+                },
+                (error) => {
+                    console.error(error);
+                },
+      
         async () => {
           const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
 
           // Update the appropriate field based on the type
           if (type === 'profile') {
         
-            await apiClient.put(`post/profilepicture/${user._id}`, { postpic: downloadURL });
+            await  apiClient.put(`post/profilepicture/${user._id}`, { postpic: downloadURL });
           } else if (type === 'cover') {
            
-            await apiClient.put(`post/coverpicture/${user._id}`, { postpic: downloadURL });
+            await  apiClient.put(`post/coverpicture/${user._id}`, { postpic: downloadURL });
           }
 
           // Fetch the updated user data after the picture is uploaded
-          const res = await apiClient.get(`users/${user._id}`);
+          const res = await  apiClient.get(`users/${user._id}`);
           if (res.data.profilepicture || res.data.coverpicture) {
             localStorage.setItem('user', JSON.stringify(res.data));
             setReload(true);
@@ -81,6 +82,18 @@ const Profile = () => {
 
   return (
     <div className="wrapperally">
+         {myprogress!==0 && <div style={{ position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100vh',
+            backgroundColor: 'rgba(0, 0, 0, 0.6)', // Dark background with transparency
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            zIndex: 1000,  }}>
+      <CircularProgressBar progress={myprogress} />
+    </div>}
       {/* Cover picture section */}
       {user._id === id ? (
         <span>
