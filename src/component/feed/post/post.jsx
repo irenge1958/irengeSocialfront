@@ -1,4 +1,4 @@
-import React from "react"; // Required for JSX in React < 17
+import React, { useEffect } from "react"; // Required for JSX in React < 17
 import './post.css'
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import app from '../../../firebase';
