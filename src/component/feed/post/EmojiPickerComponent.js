@@ -17,7 +17,7 @@ const EmojiPickerComponent = ({ onSelectEmoji }) => {
     <div>
       <span style={{fontSize:'20px',cursor:'pointer'}} onClick={togglePicker}>😊</span>
       {isPickerOpen && (
-        <EmojiPicker  onEmojiClick={handleEmojiClick} />
+        <EmojiPicker style={{position:'absolute'}} onEmojiClick={handleEmojiClick} />
       )}
     </div>
   );

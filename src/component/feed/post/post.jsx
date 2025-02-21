@@ -14,7 +14,8 @@ import apiClient from "../../../apiclient";
 import EmojiPickerComponent from './EmojiPickerComponent'
    import { useMediaQuery } from 'react-responsive';
    import CircularProgressBar from './progress'
-const Post = () => { 
+const Post = () => {
+ 
     const [myprogress,setmyprogress]=useState(0)
         const isDesktop = useMediaQuery({ minWidth: 1224 });
         const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1224 });
@@ -44,6 +45,9 @@ const [newPost,setNewPost]=useState({})
         })
         
 if(myfile){
+   
+
+
         const uploadFile = (file) => {
         
             const storage = getStorage(app);
