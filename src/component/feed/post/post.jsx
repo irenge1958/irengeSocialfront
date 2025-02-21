@@ -14,10 +14,7 @@ import apiClient from "../../../apiclient";
 import EmojiPickerComponent from './EmojiPickerComponent'
    import { useMediaQuery } from 'react-responsive';
    import CircularProgressBar from './progress'
-const Post = () => {
- 
-   
-    
+const Post = () => { 
     const [myprogress,setmyprogress]=useState(0)
         const isDesktop = useMediaQuery({ minWidth: 1224 });
         const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1224 });
@@ -47,9 +44,6 @@ const [newPost,setNewPost]=useState({})
         })
         
 if(myfile){
-   
-
-
         const uploadFile = (file) => {
         
             const storage = getStorage(app);
@@ -157,7 +151,15 @@ color:'crimson'
           <label htmlFor='file1'><div className='mediapost'><span style={red}><PermMediaSharpIcon /></span> <p>Photo et video</p>   <input type='file'  id='file1' accept='.png,.jpeg,.jpg,.mp4' style={view} onChange={(e)=>SetMyfile(e.target.files[0])} /></div></label> 
           
            </div >
-           <EmojiPickerComponent onSelectEmoji={handleSelectEmoji} />
+           <EmojiPickerComponent style={{ position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100vh',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        zIndex: 1000,  }} onSelectEmoji={handleSelectEmoji} />
             <button style={share}>share</button></div>}
             </form>
         </div>}

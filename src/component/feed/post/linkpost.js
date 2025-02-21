@@ -40,7 +40,7 @@ fetch()
                <div className='myallxx'>
                {!post?<div style={{textAlign:'center',alignItems:'center'}}>This post is no longer available</div>:
 
-   <div className='photo'><div className='mypostmidxx' >{post.postpicture.includes('mp4')?<video className='myVideo'  width="100%" muted controls>
+   <div className='photo'><div className='mypostmidxx' >{post.postpicture?.includes('mp4')?<video className='myVideo'  width="100%" muted controls>
   <source src={post.postpicture} type="video/mp4" />
 
   Your browser does not support the video tag.
