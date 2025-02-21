@@ -9,6 +9,7 @@ import apiClient from '../../apiclient'
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { useMediaQuery } from 'react-responsive';
+import {CircularProgress} from '@mui/material'
 const Feed =() => {
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
@@ -147,7 +148,7 @@ const Feed =() => {
      {(username===user.username || username==null) && <Post />}
  {posts.length>0 ? posts.map(post => (
   <Posted key={post._id}  post={post} />
-)):<div style={{postion:'relative',marginTop:'30px'}}><div style={{marginTop:'5%',fontWeight:'500',fontSize:'24px'}}>No post</div></div>}   
+)):<div style={{postion:'relative',marginTop:'30px'}}><div style={{marginTop:'5%',fontWeight:'500',fontSize:'24px'}}>{id?'No post':<CircularProgress size="60px" style={{color:'#4db8ff',size:'2px'}}/>}</div></div>}   
 
     
     </div> );
