@@ -43,7 +43,7 @@ return(
                 <input type="password" required ref={password} placeholder='your password '/>
                 <button type="submit"  className='submbutton'>{isfetching?<CircularProgress size="20px" style={white}/>:'Log in'}</button>
                 <p className='error'>{erreur?erreur:''}</p>
-                <p className='loginforget'>Forgot password?</p>
+                {/* <p className='loginforget'>Forgot password?</p> */}
                 <Link to='/register'>
                 <button className='regbutton'>create an account</button>
                 </Link>
