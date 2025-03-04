@@ -4,8 +4,10 @@ import { useRef } from 'react'
 import apiClient from '../../apiclient'
 import { useState } from 'react';
 import {Link,useHistory} from 'react-router-dom';
+import { useMediaQuery } from 'react-responsive';
 const Register =()=>{
     const [erreur,seterreur]=useState(null)
+    const isMobile = useMediaQuery({ maxWidth: 767 });
     const email=useRef()
         const username=useRef()
         const password=useRef()
@@ -36,13 +38,14 @@ const Register =()=>{
     return(
         <div className="loginwrapperallx">
         <div className="loginwrapperxx">
-            <div className="welcomex">
+        {!isMobile && <div className="welcomex">
                 <h1 className="logologinx">
                     Irengesocial
                 </h1>
                 <p>Connect with friends and the world around you on Irengesocial</p>
-            </div>
+            </div>}
             <div className="loginstylex">
+            {isMobile && <div><h1 className='logologin' style={{position:'absolute',marginTop:'-90px'}}>Irengesocial</h1></div>}
                 <form className='formloginx' id='formloginx'> 
                 <input type="email" ref={email}   placeholder='your email' required/>
                     <input type="text" required ref={username}  placeholder='username'/>
