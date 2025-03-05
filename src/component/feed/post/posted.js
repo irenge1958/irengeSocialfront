@@ -168,7 +168,7 @@ setmycpy('Copied')
 couper()
 } 
     return (
-        <div className="post">
+        <div className="post" style={{userSelect:'none'}}>
            
             <div className='mypostup12'> 
             <div className='mypostup1'>
