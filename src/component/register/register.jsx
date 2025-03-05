@@ -46,7 +46,7 @@ const Register =()=>{
             </div>}
             <div className="loginstylex">
             {isMobile && <div><h1 className='logologin' style={{position:'absolute',marginTop:'-90px'}}>Irengesocial</h1></div>}
-                <form className='formloginx' id='formloginx'> 
+                <form className='formlogin' id='formloginx'> 
                 <input type="email" ref={email}   placeholder='your email' required/>
                     <input type="text" required ref={username}  placeholder='username'/>
                     <input type="password" ref={password} minlength='6' required placeholder='your password'/>
