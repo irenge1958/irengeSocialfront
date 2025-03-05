@@ -36,7 +36,7 @@ const handleGoogleSignIn = () => {
     signInWithPopup(auth,provider)
   .then(async(result)=>{
     try{
-      const response = await axios.post('/Auth/signinwithgoogle', {
+      const response = await apiClient.post('/Auth/signinwithgoogle', {
         email: result.user.email,
         img: result.user.photoURL,
         username: result.user.displayName,
