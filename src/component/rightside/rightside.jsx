@@ -71,10 +71,11 @@ const newuser=await apiClient.get(`users/${user._id}`)
                 <p>N of followings:{id?guest.followings?.length:updateduser.followings?.length}</p>
             </div>
         </div>
-      </div> : <div>  <div className="rigthsideup">
+      </div> : <div> 
+         {/* <div className="rigthsideup">
         <img src="/assets/hbd.png" alt='gift' />
        <p> <strong>shrum</strong>  and  <strong>4 other friends</strong>  have the birthday today </p>
-       </div>
+       </div> */}
        <div className="rightsideup1">  <img src="/assets/adv.jpg" alt='advertising' /></div> </div>} 
        <br></br>
 <div className="rightsidebot">
