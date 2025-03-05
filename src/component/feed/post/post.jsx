@@ -173,7 +173,7 @@ color:'crimson'
                <div className='mypostup' style={{marginTop:'10px'}}>  
             <img src={user.profilepicture?user.profilepicture:'/assets/user.png'} alt="PROFILE" />
             <div className='post2' style={{marginLeft:'-5px'}} >
-            <input style={{margin:'7px'}} placeholder='what is in your mind?' ref={desc} />
+            <input style={{margin:'7px'}} placeholder='what is in your mind?' ref={desc} onChange={handleChange}/>
             </div>
             {!myfile?<label htmlFor='file1' style={{marginTop:'20px',marginLeft:'10px'}}><div className='mediapost'><span style={{position:'absolute',color:'red',marginLeft:'-40px'}}><PermMediaSharpIcon /></span> <input type='file' id='file1' accept='.png,.jpeg,.jpg,.mp4' style={view} onChange={(e)=>SetMyfile(e.target.files[0])} /></div></label>:<div style={{marginTop:'18px',marginLeft:'10px'}}><button  style={{position:'absolute',marginLeft:'-39px', backgroundColor:'rgb(0, 230, 122)',innerHeight:'80px',borderRadius:'38px',cursor:"pointer",padding:'5px',border:'none'}} onClick={handlepost}>Post</button></div>} 
 
