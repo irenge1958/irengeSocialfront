@@ -1,6 +1,6 @@
 
 const apicall2= async (credentials,dispatch)=>{
-console.log(credentials)
+    
 try {
     dispatch({type:'LOGIN_SUCCESS',payload:credentials})
     

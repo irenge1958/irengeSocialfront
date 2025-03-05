@@ -35,6 +35,7 @@ const navigateto=useHistory()
 const handleGoogleSignIn = () => {
     signInWithPopup(auth,provider)
   .then(async(result)=>{
+    dispatch({type:'LOGIN_START'})
     try{
       const response = await apiClient.post('/Auth/signinwithgoogle', {
         email: result.user.email,
