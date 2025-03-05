@@ -16,6 +16,13 @@ const Profile = () => {
   const [updatedUser, setUpdatedUser] = useState({});
   const [reload, setReload] = useState(false);
   const [myprogress,setmyprogress]=useState(0)
+  const formatName=(fullName)=>{
+const nameParts = fullName.trim().split(" "); // Split by spaces
+    if (nameParts.length < 2) return fullName; // Return as is if only one name
+
+    return `${nameParts[0]} ${nameParts[1][0]}.`; // First name + Initial of second name
+}
+
   // Fetch the updated user data when user._id doesn't match
   useEffect(() => {
     if (user._id !== id) {
@@ -201,7 +208,7 @@ const Profile = () => {
         />
       )}
 
-      <h1>{username}</h1>
+      <h1>{formatName(username)}</h1>
     </div>
   );
 };
